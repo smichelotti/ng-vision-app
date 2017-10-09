@@ -26,6 +26,7 @@ export class HomePage {
     
 
     this.camera.getPicture(options).then((imageUri) => {
+      alert(`After get picture: ${imageUri}`)
       this.imgPath = imageUri;
     });
   }

@@ -8,7 +8,7 @@
 
 <ion-content padding>
   
-  <button full primary (click)="takePicture()">Take Picture</button>
+  <button ion-button full color="primary" (click)="takePicture()">Take Picture</button>
   
   <ion-card *ngIf="imgPath">
     <img [src]="imgPath">
