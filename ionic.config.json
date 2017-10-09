@@ -2,5 +2,7 @@
   "name": "ng-vision-app",
   "app_id": "62e7f93c",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

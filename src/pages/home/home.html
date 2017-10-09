@@ -1,14 +1,17 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Angular Vision
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  
+  <button full primary (click)="takePicture()">Take Picture</button>
+  
+  <ion-card *ngIf="imgPath">
+    <img [src]="imgPath">
+  </ion-card>
+
 </ion-content>
