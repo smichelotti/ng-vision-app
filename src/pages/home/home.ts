@@ -38,7 +38,8 @@ export class HomePage {
     // });
 
     this.camera.getPicture(options).then((imagePath) => {
-      //this.imgPath = imagePath;
+      this.imgSrc = imagePath;
+      
       var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
       var currentPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
       alert(`After get picture: ${imagePath}`)
