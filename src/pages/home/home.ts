@@ -78,6 +78,9 @@ export class HomePage {
 
     fileTransfer.upload(this.imgSrc, 'https://eastus.api.cognitive.microsoft.com/vision/v1.0/describe', options).then(data => {
       alert(`**success: ${data}`);
+      alert(data.response);
+      let json = JSON.parse(data.response);
+      alert(json.description.captions[0].text);
     }, err => {
       alert(`**error: ${err}`);
     });
