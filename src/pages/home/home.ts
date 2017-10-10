@@ -23,8 +23,8 @@ export class HomePage {
 
   takePicture() {
     let options: CameraOptions = {
-      //destinationType: DestinationType.FILE_URL,
-      destinationType: DestinationType.DATA_URL,
+      destinationType: DestinationType.FILE_URL,
+      //destinationType: DestinationType.DATA_URL,
       sourceType: PictureSourceType.CAMERA,
       encodingType: EncodingType.PNG,
       targetHeight: 500,
@@ -33,20 +33,20 @@ export class HomePage {
       correctOrientation: true
     };
     
-    this.camera.getPicture(options).then((imgData) => {
-      this.base64Image = "data:image/jpeg;base64," + imgData;
-    });
-
-    // this.camera.getPicture(options).then((imagePath) => {
-    //   //this.imgPath = imagePath;
-    //   var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-    //   var currentPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-    //   alert(`After get picture: ${imagePath}`)
-    //   alert(`currentName: ${currentName}`); 
-    //   alert(`currentPath: ${currentPath}`);      
-    //   //this.copyFileToLocalDir(currectPath, currentName, this.createFileName());
-    //   this.copyFileToLocalDir(currentPath, currentName);
+    // this.camera.getPicture(options).then((imgData) => {
+    //   this.base64Image = "data:image/jpeg;base64," + imgData;
     // });
+
+    this.camera.getPicture(options).then((imagePath) => {
+      //this.imgPath = imagePath;
+      var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+      var currentPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+      alert(`After get picture: ${imagePath}`)
+      alert(`currentName: ${currentName}`); 
+      alert(`currentPath: ${currentPath}`);      
+      //this.copyFileToLocalDir(currectPath, currentName, this.createFileName());
+      this.copyFileToLocalDir(currentPath, currentName);
+    });
   }
 
   copyFileToLocalDir(currentPath, currentName) {
