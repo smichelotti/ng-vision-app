@@ -10,8 +10,8 @@
   
   <button ion-button full color="primary" (click)="takePicture()">Take Picture</button>
   
-  <ion-card *ngIf="imgPath">
-    <img [src]="imgPath">
+  <ion-card *ngIf="imgSrc">
+    <img [src]="imgSrc">
   </ion-card>
 
 </ion-content>
