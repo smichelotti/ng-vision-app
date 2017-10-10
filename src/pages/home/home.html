@@ -18,3 +18,9 @@
   </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" *ngIf="imgSrc">
+    <button ion-button full (click)="uploadImage()">Upload</button>
+  </ion-toolbar>
+</ion-footer>

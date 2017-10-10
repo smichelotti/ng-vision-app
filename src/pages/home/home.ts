@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions, DestinationType, EncodingType, PictureSourceType } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
+import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
 
 declare var cordova: any;
 
@@ -17,7 +18,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     private camera: Camera, 
-    //private transfer: Transfer, 
+    private fileTransfer: FileTransfer, 
     private file: File, 
     private filePath: FilePath) { }
 
@@ -63,6 +64,23 @@ export class HomePage {
       alert('Error while storing file.');
       //this.presentToast('Error while storing file.');
     });;
+  }
+
+  uploadImage() {
+    let options: FileUploadOptions = {
+      mimeType: 'application/octet-stream',
+      headers: {
+        'Ocp-Apim-Subscription-Key': 'b867a02e0594487fb6cdcb52d9dd11bd'
+      }
+    };
+
+    let fileTransfer = this.fileTransfer.create();
+
+    fileTransfer.upload(this.imgSrc, 'https://eastus.api.cognitive.microsoft.com/vision/v1.0/describe', options).then(data => {
+      alert(`**success: ${data}`);
+    }, err => {
+      alert(`**error: ${err}`);
+    });
   }
 
 }
