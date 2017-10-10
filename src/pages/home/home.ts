@@ -45,7 +45,9 @@ export class HomePage {
   }
 
   copyFileToLocalDir(currentPath, currentName) {
-    alert(`**inside copyFile func; dir: ${cordova.file.dataDirectory}`);
+    //alert(`**inside copyFile func; dir: ${cordova.file.dataDirectory}`);
+    alert(`**inside copyFile func; cordova: ${cordova}`);
+    alert(`**inside copyFile func; cordova.file: ${cordova.file}`);
     this.file.copyFile(currentPath, currentName, cordova.file.dataDirectory, currentName).then(success => {
       this.imgSrc = cordova.file.dataDirectory + currentName;
       alert(`success: ${success}`);
