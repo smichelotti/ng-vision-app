@@ -25,9 +25,14 @@ export class HomePage {
     };
     
 
-    this.camera.getPicture(options).then((imageUri) => {
-      alert(`After get picture: ${imageUri}`)
-      this.imgPath = imageUri;
+    this.camera.getPicture(options).then((imagePath) => {
+      //this.imgPath = imagePath;
+      var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+      var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+      alert(`After get picture: ${imagePath}`)
+      alert(`currentName: ${currentName}`); 
+      alert(`correctPath: ${correctPath}`);      
+           
     });
   }
 
