@@ -45,8 +45,10 @@ export class HomePage {
   }
 
   copyFileToLocalDir(currentPath, currentName) {
-    this.file.copyFile(currentPath, currentName, cordova.file.datadirectory, currentName).then(success => {
-      this.imgSrc = currentName;
+    this.file.copyFile(currentPath, currentName, cordova.file.dataDirectory, currentName).then(success => {
+      this.imgSrc = cordova.file.dataDirectory + currentName;
+      alert(`success: ${success}`);
+      alert(`imgSrc: ${this.imgSrc}`);
     }, error => {
       alert('Error while storing file.');
       //this.presentToast('Error while storing file.');
