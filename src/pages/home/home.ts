@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { Camera, CameraOptions, DestinationType, EncodingType, PictureSourceType } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
-//import { FilePath } from '@ionic-native/file-path';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
 
 declare var cordova: any;
@@ -20,22 +19,21 @@ export class HomePage {
     private camera: Camera, 
     private fileTransfer: FileTransfer, 
     private file: File, 
-    //private filePath: FilePath,
     public loadingCtrl: LoadingController) { }
 
   takePicture() {
     let options: CameraOptions = {
+      quality: 50,
       destinationType: DestinationType.FILE_URL,
       sourceType: PictureSourceType.CAMERA,
       encodingType: EncodingType.PNG,
-      // targetHeight: 500,
-      // targetWidth: 500,
+      targetHeight: 500,
+      targetWidth: 500,
       saveToPhotoAlbum: false//,
      // correctOrientation: true
     };
     
     this.camera.getPicture(options).then((imagePath) => {
-      //this.imgSrc = imagePath;
       var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
       var currentPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
       this.copyFileToLocalDir(currentPath, currentName);
@@ -45,11 +43,8 @@ export class HomePage {
   copyFileToLocalDir(currentPath, currentName) {
     this.file.copyFile(currentPath, currentName, cordova.file.dataDirectory, currentName).then(success => {
       this.imgSrc = cordova.file.dataDirectory + currentName;
-      // alert(`success: ${success}`);
-      // alert(`imgSrc: ${this.imgSrc}`);
     }, error => {
-      //alert('Error while storing file.');
-      //this.presentToast('Error while storing file.');
+      alert('Error while storing file.');
     });;
   }
 
@@ -70,16 +65,12 @@ export class HomePage {
 
     loading.present();
     fileTransfer.upload(this.imgSrc, visionApiUrl, options).then(data => {
-      // alert(`**success: ${data}`);
-      // alert(data.response);
       let json = JSON.parse(data.response);
       loading.dismissAll();
       alert(json.description.captions[0].text);
     }, err => {
       loading.dismissAll();
-      alert(`**error: ${err}`);
       alert(`**error: ${err.body}`);
-      
     });
   }
 
