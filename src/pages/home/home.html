@@ -11,7 +11,7 @@
   <button ion-button full color="primary" (click)="takePicture()">Take Picture</button>
   
   <ion-card *ngIf="imgSrc">
-    <img [src]="imgSrc">
+    <img [src]="imgSrc" style="width:100%">
   </ion-card>
   <ion-card *ngIf="base64Image">
     <img [src]="base64Image">
