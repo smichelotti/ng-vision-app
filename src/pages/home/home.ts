@@ -30,8 +30,8 @@ export class HomePage {
       encodingType: EncodingType.PNG,
       // targetHeight: 500,
       // targetWidth: 500,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
+      saveToPhotoAlbum: false//,
+     // correctOrientation: true
     };
     
     this.camera.getPicture(options).then((imagePath) => {
@@ -76,8 +76,10 @@ export class HomePage {
       loading.dismissAll();
       alert(json.description.captions[0].text);
     }, err => {
-      alert(`**error: ${err}`);
       loading.dismissAll();
+      alert(`**error: ${err}`);
+      alert(`**error: ${err.body}`);
+      
     });
   }
 
