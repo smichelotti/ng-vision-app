@@ -13,14 +13,11 @@
   <ion-card *ngIf="imgSrc">
     <img [src]="imgSrc" style="width:100%">
   </ion-card>
-  <ion-card *ngIf="base64Image">
-    <img [src]="base64Image">
-  </ion-card>
 
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="primary" *ngIf="imgSrc">
+  <ion-toolbar *ngIf="imgSrc">
     <button ion-button full color="secondary" (click)="uploadImage()">Upload</button>
   </ion-toolbar>
 </ion-footer>

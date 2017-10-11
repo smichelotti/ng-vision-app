@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { Camera, CameraOptions, DestinationType, EncodingType, PictureSourceType } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
@@ -15,6 +15,7 @@ export class HomePage {
   public base64Image: string;
 
   constructor(
+    public alertCtrl: AlertController,
     public navCtrl: NavController, 
     private camera: Camera, 
     private fileTransfer: FileTransfer, 
@@ -29,8 +30,7 @@ export class HomePage {
       encodingType: EncodingType.PNG,
       targetHeight: 500,
       targetWidth: 500,
-      saveToPhotoAlbum: false//,
-     // correctOrientation: true
+      saveToPhotoAlbum: false
     };
     
     this.camera.getPicture(options).then((imagePath) => {
@@ -67,11 +67,21 @@ export class HomePage {
     fileTransfer.upload(this.imgSrc, visionApiUrl, options).then(data => {
       let json = JSON.parse(data.response);
       loading.dismissAll();
-      alert(json.description.captions[0].text);
+      //alert(json.description.captions[0].text);
+      this.showAlert(json.description.captions[0].text);
     }, err => {
       loading.dismissAll();
       alert(`**error: ${err.body}`);
     });
+  }
+
+  showAlert(message) {
+    let alert = this.alertCtrl.create({
+      title: `I think it's...`,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

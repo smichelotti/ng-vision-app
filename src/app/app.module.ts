@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
-import { FilePath } from '@ionic-native/file-path';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -27,7 +26,6 @@ import { HomePage } from '../pages/home/home';
   providers: [
     Camera,
     File,
-    FilePath,
     FileTransfer,
     StatusBar,
     SplashScreen,
