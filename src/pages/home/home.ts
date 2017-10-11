@@ -67,7 +67,6 @@ export class HomePage {
     fileTransfer.upload(this.imgSrc, visionApiUrl, options).then(data => {
       let json = JSON.parse(data.response);
       loading.dismissAll();
-      //alert(json.description.captions[0].text);
       this.showAlert(json.description.captions[0].text);
     }, err => {
       loading.dismissAll();
