@@ -56,7 +56,7 @@ export class HomePage {
     let options: FileUploadOptions = {
       mimeType: 'application/octet-stream',
       headers: {
-        'Ocp-Apim-Subscription-Key': 'b867a02e0594487fb6cdcb52d9dd11bd'
+        'Ocp-Apim-Subscription-Key': '<enter-key-here>'
       }
     };
     const visionApiUrl = 'https://eastus.api.cognitive.microsoft.com/vision/v1.0/describe';
