@@ -1,4 +1,6 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# ng-vision-app
+
+Demo project to show using Microsoft Cognitive Services with Ionic/Angular to create a mobile app.
 
 ## How to use this template
 
